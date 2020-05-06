@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: Validate Properties
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /validate_properties:
+    get:
+      summary: Validate Property Names
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: string
+              examples:
+                valid:
+                  value:
+                    results: []
+                invalid:
+                  value:
+                    results:
+                      - complted
+                      - nme
+      operationId: get-validate-properties
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: property_names
+          description: Comma separated list of property names to validate
+          required: true
+      description: Takes comma separated list of property names and returns the invalid ones.
+    parameters: []
+components:
+  schemas: {}

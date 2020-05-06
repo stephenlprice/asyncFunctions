@@ -1,0 +1,6 @@
+module.exports = async function (targetVal) { const propertyNames = Object.keys(targetVal); if (!propertyNames.length) return;
+// Get list of property names we have not validated yet const propertyNamesToValidate = propertyNames.filter(propertyName => !this.cache.has(propertyName)) if (propertyNamesToValidate.length) { const validationPromise = validatePropertyNames(propertyNamesToValidate);
+// Store validation promise for each property name propertyNamesToValidate.forEach(propertyName => { this.cache.set(propertyName, validationPromise); }); }
+// Resolve all validation promises to receive invalid property name results const validationResults = await Promise.all(propertyNames.map(propertyName => { return this.cache.get(propertyName); })); const uniqueValidationResults = [...new Set(validationResults.flat())]
+// Get invalid property names from results const invalidPropertyNames = propertyNames.filter(propertyName => { return uniqueValidationResults.includes(propertyName); });
+if (invalidPropertyNames && invalidPropertyNames.length) { // Return error message for each invalid property name return invalidPropertyNames.map(propertyName => ({ message

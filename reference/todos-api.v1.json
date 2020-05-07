@@ -67,7 +67,7 @@
                     "name": {
                       "type": "string"
                     },
-                    "completed": {
+                    "complted": {
                       "type": [
                         "boolean",
                         "null"
@@ -76,7 +76,7 @@
                   },
                   "required": [
                     "name",
-                    "completed"
+                    "complted"
                   ]
                 },
                 {

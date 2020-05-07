@@ -1,27 +1,16 @@
 formats:
   - oas2
   - oas3
-extends:
-  - 'spectral:oas'
-rules:
-  info-matches-stoplight:
-    description: This is an example rule
-    message: Info must contain Stoplight
-    given: $.info
-    recommended: true
-    type: style
-    then:
-      field: title
-      function: pattern
-      functionOptions:
-        match: Stoplight
 
+rules:
   validation-api:
-    description: test
-    message: 'invalid field {{error}}'
+    description: sample async function
+    message: '{{error}}'
     given: $.paths..responses..schema..properties[*]~
     recommended: true
     type: style
     severity: error
     then:
-      function:
+      function: validateProperties
+functions:
+  - validateProperties

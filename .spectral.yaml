@@ -1,6 +1,6 @@
 formats:
-  - oas2
   - oas3
+  - oas2
 extends:
   - 'spectral:oas'
 rules:
@@ -15,13 +15,11 @@ rules:
       function: pattern
       functionOptions:
         match: Stoplight
-
-  validation-api:
-    description: test
-    message: invalid field {{error}}
-    given: $.paths..responses..schema..properties[*]~
-    recommended: true
-    type: style
+  validateProperties:
+    message: '{{error}}'
     severity: error
+    given: '$.paths...*.schema..properties'
     then:
-      function:
+      function: validateProperties
+functions:
+  - validateProperties

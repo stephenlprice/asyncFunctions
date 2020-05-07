@@ -32,7 +32,7 @@ module.exports = async function (targetVal) {
 
 async function validatePropertyNames(propertyNamesToValidate) {
   // Validate the keys
-  const res = await fetch(`http://127.0.0.1:3100/validate_properties?property_names=${propertyNamesToValidate.join(',')}`, { 
+  const res = await fetch(`http://127.0.0.1:3102/validate_properties?property_names=${propertyNamesToValidate.join(',')}`, { 
     headers: { prefer: 'code=200, example=invalid' } 
   });
 

@@ -28,7 +28,7 @@ paths:
                 invalid:
                   value:
                     results:
-                      - complted
+                      - amount
                       - nme
       operationId: get-validate-properties
       parameters:

@@ -29,7 +29,8 @@ paths:
                   value:
                     results:
                       - amount
-                      - nme
+                      - card
+                      - currency
       operationId: get-validate-properties
       parameters:
         - schema:
